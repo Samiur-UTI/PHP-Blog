@@ -14,14 +14,14 @@
             $this->conn = $db;
         }
         //Methods
-        public function create(){
+        public function create($a,$b){
             $query = 'INSERT INTO '
                         .$this->table.
                      '(title,body) VALUES (:title,:body)';
             $stmt = $this->conn->prepare($query);
             
-            $this->title = htmlspecialchars(strip_tags($this->title));
-            $this->post = htmlspecialchars(strip_tags($this->post));
+            $this->title = htmlspecialchars(strip_tags($a));
+            $this->body = htmlspecialchars(strip_tags($b));
 
             $stmt->bindParam('title', $this->title);
             $stmt->bindParam('body', $this->body);
